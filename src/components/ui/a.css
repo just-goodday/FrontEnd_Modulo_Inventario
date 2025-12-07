@@ -1,0 +1,268 @@
+/* ============================================
+   STAT CARD - DataStore Design System
+   ============================================ */
+
+.container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 100px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px var(--overlay-subtle);
+}
+
+.container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--overlay-light);
+  border-color: var(--primary);
+}
+
+/* ============================================
+   ICON CONTAINER
+   ============================================ */
+
+.iconContainer {
+  flex-shrink: 0;
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.container:hover .iconBox {
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Iconos siempre blancos */
+}
+
+/* ============================================
+   TEXT CONTAINER
+   ============================================ */
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.titulo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.valor {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--text);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet: Iconos y textos más pequeños */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .container {
+    padding: 16px;
+    gap: 12px;
+    min-height: 90px;
+  }
+
+  .iconBox {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .titulo {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .valor {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* Desktop: Tamaños estándar */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .container {
+    padding: 18px;
+    gap: 14px;
+    min-height: 96px;
+  }
+
+  .iconBox {
+    width: 44px;
+    height: 44px;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .titulo {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .valor {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+/* Desktop grande: Tamaños optimizados */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .container {
+    padding: 20px;
+    gap: 16px;
+    min-height: 100px;
+  }
+
+  .iconBox {
+    width: 48px;
+    height: 48px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .titulo {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .valor {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+/* XL Desktop: Más espacioso */
+@media (min-width: 1536px) and (max-width: 1919px) {
+  .container {
+    padding: 22px;
+    gap: 18px;
+    min-height: 108px;
+  }
+
+  .iconBox {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .titulo {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .valor {
+    font-size: 26px;
+    line-height: 34px;
+  }
+}
+
+/* 1080p+: Tamaños grandes */
+@media (min-width: 1920px) {
+  .container {
+    padding: 24px;
+    gap: 20px;
+    min-height: 120px;
+    border-radius: 14px;
+  }
+
+  .iconBox {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .titulo {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .valor {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+/* 4K: Tamaños extra grandes */
+@media (min-width: 2560px) {
+  .container {
+    padding: 28px;
+    gap: 24px;
+    min-height: 140px;
+    border-radius: 16px;
+  }
+
+  .iconBox {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .titulo {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .valor {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}

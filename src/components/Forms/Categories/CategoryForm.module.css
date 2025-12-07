@@ -1,0 +1,502 @@
+/* ============================================
+   CATEGORY FORM - DataStore Design System
+   ============================================ */
+
+.container {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr; /* En móvil se apilan */
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    max-width: 600px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  padding: 20px 20px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.badge {
+  background: rgba(246, 168, 21, 0.1);
+  color: var(--warning);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+
+.closeButton {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background: var(--overlay-light);
+  color: var(--text);
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.form {
+  padding: 20px 20px 5px 20px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ============================================
+   FIELDS
+   ============================================ */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  min-height: 18px;
+}
+
+.input {
+  height: 40px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.inputError {
+  border-color: var(--error) !important;
+  background: rgba(200, 19, 83, 0.05) !important;
+}
+
+.textarea {
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  resize: vertical;
+  min-height: 64px;
+  width: 100%;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.textareaWrapper {
+  position: relative;
+}
+
+.charCount {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--card);
+  padding: 2px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.hint {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+  margin: 10px 0 10px 0;
+}
+
+.errorText {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--error);
+  margin: 0;
+}
+
+/* ============================================
+   LEVEL INDICATOR
+   ============================================ */
+
+.levelIndicator {
+  background: var(--primary-light);
+  border-left: 3px solid var(--primary);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+
+.levelBadge {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================
+   CASCADER
+   ============================================ */
+
+.cascader {
+  width: 100% !important;
+}
+
+.cascader :global(.ant-select-selector) {
+  height: 40px !important;
+  padding: 8px 12px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: -0.1px !important;
+  color: var(--text) !important;
+  transition: all 0.2s ease !important;
+}
+
+.cascader :global(.ant-select-selector:hover) {
+  border-color: var(--primary) !important;
+}
+
+.cascader :global(.ant-select-focused .ant-select-selector) {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-light) !important;
+}
+
+.cascader :global(.ant-select-selection-placeholder) {
+  color: var(--text-muted) !important;
+  opacity: 0.6 !important;
+}
+
+.cascader :global(.ant-select-arrow) {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   TOGGLE
+   ============================================ */
+
+.toggleContainer {
+  background: transparent;
+  border-radius: 0;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.toggleLabel {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  background: var(--border);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.toggleActive {
+  background: var(--primary);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  display: block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggleActive .toggleThumb {
+  transform: translateX(18px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.formFooter {
+  position: sticky;
+  bottom: 0;
+  background: var(--card);
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitButton {
+  width: 100%;
+  max-width: 400px;
+  height: 45px;
+  background: var(--primary);
+  border: none;
+  border-radius: 50px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .container {
+    padding: 12px;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+
+  .header {
+    padding: 16px 16px 0 16px;
+  }
+
+  .form {
+    padding: 16px 16px 16px 16px;
+  }
+
+  .formFooter {
+    padding: 12px 16px;
+  }
+
+  .formFooter .submitButton {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+:root[data-theme="dark"] .badge {
+  background: rgba(255, 184, 77, 0.2);
+}
+
+:root[data-theme="dark"] .charCount {
+  background: rgba(26, 29, 46, 0.9);
+}
+
+:root[data-theme="datastore"] .badge {
+  background: rgba(255, 192, 120, 0.2);
+}
+
+:root[data-theme="datastore"] .charCount {
+  background: rgba(30, 41, 59, 0.9);
+}

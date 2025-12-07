@@ -1,0 +1,195 @@
+/* BtnLogOut.module.css */
+.logoutContainer {
+    padding: 16px;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+}
+
+.logoutButton {
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoutButton:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--error);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.logoutButton:active {
+    transform: translateY(0);
+}
+
+.logoutContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.logoutIcon {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoutButton:hover .logoutIcon {
+    color: var(--error);
+}
+
+.logoutText {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.logoutButton:hover .logoutText {
+    color: var(--error);
+}
+
+/* Modal Styles - MEJORADO */
+.logoutModal {
+    /* El modal ahora usa ConfigProvider para los temas */
+}
+
+.logoutModal :global(.ant-modal-content) {
+    background: var(--card) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 20px 40px var(--overlay-light) !important;
+    backdrop-filter: blur(10px);
+}
+
+.logoutModal :global(.ant-modal-header) {
+    background: var(--card) !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 20px 24px !important;
+    margin-bottom: 0 !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.logoutModal :global(.ant-modal-title) {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text) !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logoutModal :global(.ant-modal-body) {
+    background: var(--card) !important;
+    padding: 24px !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+.logoutModal :global(.ant-modal-footer) {
+    background: var(--card) !important;
+    border-top: 1px solid var(--border) !important;
+    padding: 16px 24px !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modalIcon {
+    color: var(--error);
+}
+
+.modalContent {
+    text-align: center;
+}
+
+.modalContent p {
+    margin: 0 0 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.modalSubtext {
+    font-size: 14px !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 0 !important;
+    font-weight: 400;
+}
+
+.confirmButton {
+    background: var(--error) !important;
+    border-color: var(--error) !important;
+    font-weight: 500;
+    color: white !important;
+}
+
+.confirmButton:hover {
+    background: var(--error-hover) !important;
+    border-color: var(--error-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+.confirmButton:active {
+    transform: translateY(0);
+}
+
+.cancelButton {
+    font-weight: 500;
+    background: transparent !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+
+.cancelButton:hover {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+    transform: translateY(-1px);
+}
+
+/* Mejoras para el texto de los botones en el modal */
+.logoutModal :global(.ant-btn) {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logoutContainer {
+        padding: 12px;
+    }
+    
+    .logoutButton {
+        padding: 10px 12px;
+    }
+    
+    .logoutText {
+        font-size: 13px;
+    }
+    
+    .logoutModal :global(.ant-modal-content) {
+        margin: 20px;
+        width: auto !important;
+    }
+}

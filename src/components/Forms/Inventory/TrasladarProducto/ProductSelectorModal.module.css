@@ -1,0 +1,185 @@
+/* ==========================
+   BASE DEL MODAL
+========================== */
+.container {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal {
+    background: var(--card);
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideIn 0.25s ease;
+}
+
+/* ==========================================
+   HEADER — IGUAL QUE MOVEMENTMODAL
+========================================== */
+.header {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.headerLeft {
+    flex: 1;
+    min-width: 0;
+}
+
+.titleWrapper {
+    flex: 1;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+    
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5; /* ← era 1.3 */
+    padding: 0;   
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+    margin-bottom: 6px; /* NUEVO ESPACIADO */
+}
+
+.closeButton {
+    width: 28px;
+    height: 28px;
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+/* ==========================
+   SEARCH INPUT — FIX
+========================== */
+.searchWrapper {
+    padding: 12px 20px 16px 20px; /* MÁS ESPACIO */
+}
+
+.searchInput {
+    height: 42px !important;
+    border-radius: 10px !important;
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border) !important;
+    padding: 0 12px !important;
+}
+
+.searchInput:hover {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.03); /* NEUTRO */
+    box-shadow: 0 0 0 1px var(--primary) inset; /* fosforescente */
+}
+
+.searchInput:active {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.03); /* NEUTRO */
+    box-shadow: 0 0 0 1px var(--primary) inset; /* fosforescente */
+}
+
+/* ==========================
+   LISTA SCROLLEABLE
+========================== */
+.listContainer {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+}
+
+.listContainer::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+.listContainer {
+    scrollbar-width: none;
+}
+
+/* ==========================
+   TARJETAS
+========================== */
+.productCard {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.productCard:hover {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.03); /* NEUTRO */
+    box-shadow: 0 0 0 1px var(--primary) inset; /* fosforescente */
+}
+
+.avatar {
+    background: var(--overlay-light) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+.footer {
+    padding: 16px 20px 24px;
+    flex-shrink: 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+}
+
+.cancelButton {
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancelButton:hover {
+    background: var(--overlay-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}

@@ -1,0 +1,191 @@
+/* Table.module.css */
+.tableWrapper {
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px var(--overlay-light);
+}
+
+.searchBar {
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: var(--card);
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.searchInput {
+    flex: 1;
+    max-width: 500px;
+}
+
+.tableHeader {
+    padding: 16px 20px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text);
+}
+
+/* Estilos para la tabla que se adaptan al tema */
+.table {
+    background: var(--card);
+}
+
+.tableRow {
+    background: var(--card);
+    transition: background-color 0.2s ease;
+}
+
+.tableRow:hover {
+    background: var(--overlay-subtle) !important;
+}
+
+/* Botón personalizado */
+.addButton {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.addButton:hover {
+    background: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .searchBar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .searchInput {
+        max-width: none;
+    }
+    
+    .addButton {
+        margin-left: 0;
+    }
+}
+
+/* Agregar al Table.module.css existente */
+
+.tableContainer {
+    max-height: calc(100vh - 300px);
+    overflow: hidden;
+}
+
+.imageSlider {
+    position: relative;
+}
+
+.imageContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.sliderButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.imageContainer:hover .sliderButton {
+    opacity: 1;
+}
+
+.prevButton {
+    left: 4px;
+}
+
+.nextButton {
+    right: 4px;
+}
+
+.dotsContainer {
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.activeDot {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Contador de productos para InventoryTable */
+.productCount {
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+/* Mejorar el scroll interno */
+.table :global(.ant-table-body) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.table :global(.ant-table-body)::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.table :global(.ant-table-body)::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.table :global(.ant-table-body)::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Responsive para InventoryTable */
+@media (max-width: 768px) {
+    .productCount {
+        margin-left: 0;
+        text-align: center;
+    }
+}

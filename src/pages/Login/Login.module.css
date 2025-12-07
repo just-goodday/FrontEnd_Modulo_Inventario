@@ -1,0 +1,502 @@
+/* Login.module.css - ERP Login Page Simplificada */
+
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  transition: background 0.3s ease;
+  padding: 20px;
+}
+
+/* ============================================
+   FONDO SIMPLIFICADO
+   ============================================ */
+
+.gradientBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, var(--primary-light) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, var(--primary-light) 0%, transparent 50%);
+  opacity: 0.3;
+  animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   BOTÓN DE TEMA
+   ============================================ */
+
+.themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px var(--overlay-light);
+}
+
+.themeToggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--overlay-medium);
+  background: var(--primary);
+  color: white;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 500px;
+  height: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--overlay-medium);
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   PANEL DE BRANDING (IZQUIERDO)
+   ============================================ */
+
+.brandPanel {
+  flex: 1;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 400px;
+}
+
+.brandContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo */
+.logoContainer {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.logoFallback {
+  width: 100px;
+  height: 100px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.3);
+  margin: 0 auto;
+}
+
+.logoText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -1px;
+}
+
+.logoGlow {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Texto de bienvenida */
+.brandTitle {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.brandHighlight {
+  background: rgba(255,255,255,0.2);
+  padding: 0 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.brandSubtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.95);
+  line-height: 1.5;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Características */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateX(5px);
+}
+
+.featureIcon {
+  font-size: 20px;
+}
+
+.featureText {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ============================================
+   PANEL DE FORMULARIO (DERECHO)
+   ============================================ */
+
+.formPanel {
+  flex: 1;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-width: 400px;
+}
+
+.formPanel.mobileForm {
+  min-width: auto;
+  padding: 30px 20px;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 380px;
+}
+
+/* Logo móvil */
+.mobileLogo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mobileLogo .logoFallback {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
+}
+
+.mobileLogo .logoText {
+  font-size: 28px;
+}
+
+.mobileBrandTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.formHeader {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.formTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.formSubtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ============================================
+   FORMULARIO MEJORADO
+   ============================================ */
+
+.form {
+  margin-bottom: 0;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  color: var(--text-secondary);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px 12px 48px !important;
+  border: 2px solid var(--border) !important;
+  border-radius: 12px !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-size: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Placeholders mejorados */
+.input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.8 !important;
+}
+
+.input:hover {
+  border-color: var(--primary-light) !important;
+}
+
+.input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-light) !important;
+  background: var(--card) !important;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.eyeButton:hover {
+  color: var(--primary);
+}
+
+/* Opciones del formulario */
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.checkbox {
+  color: var(--text) !important;
+}
+
+.forgotLink {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgotLink:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Botón de login */
+.loginButton {
+  height: 48px !important;
+  border-radius: 12px !important;
+  background: var(--primary) !important;
+  border: none !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+.loginButton:hover {
+  background: var(--primary-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(19, 200, 136, 0.3) !important;
+}
+
+.loginButton:active {
+  transform: translateY(0) !important;
+}
+
+/* Footer */
+.formFooter {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.formFooter p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .contentWrapper {
+    max-width: 900px;
+  }
+  
+  .brandPanel {
+    min-width: 350px;
+    padding: 30px;
+  }
+  
+  .formPanel {
+    min-width: 350px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+    min-height: auto;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .brandPanel {
+    display: none;
+  }
+
+  .formPanel {
+    min-width: auto;
+    width: 100%;
+    padding: 25px 20px;
+  }
+
+  .formContainer {
+    max-width: 100%;
+  }
+
+  .themeToggle {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginContainer {
+    padding: 10px;
+  }
+
+  .contentWrapper {
+    border-radius: 10px;
+  }
+
+  .formPanel {
+    padding: 20px 15px;
+  }
+
+  .formTitle {
+    font-size: 22px;
+  }
+
+  .formSubtitle {
+    font-size: 14px;
+  }
+
+  .themeToggle {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+}
+

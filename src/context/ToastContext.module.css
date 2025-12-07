@@ -1,0 +1,76 @@
+/* styles/toast.module.css */
+
+/* Variables CSS que se adaptan a tus temas */
+.toastContainer {
+  /* Estas variables se heredarán de tu design system */
+}
+
+.toast {
+  border-radius: 12px !important;
+  border: 1px solid var(--border) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  box-shadow: 0 8px 32px var(--overlay-medium) !important;
+  min-height: 60px !important;
+  font-family: 'Inter', sans-serif !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: var(--card) !important;
+  color: var(--text) !important;
+}
+
+.toast:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 40px var(--overlay-medium) !important;
+}
+
+/* Tipos de toast con colores de tu design system */
+.toastSuccess {
+  border-left: 4px solid var(--success) !important;
+}
+
+.toastError {
+  border-left: 4px solid var(--error) !important;
+}
+
+.toastWarning {
+  border-left: 4px solid var(--warning) !important;
+}
+
+.toastInfo {
+  border-left: 4px solid var(--primary) !important;
+}
+
+.toastLoading {
+  border-left: 4px solid var(--primary) !important;
+}
+
+.toastProduct {
+  border-left: 4px solid var(--primary) !important;
+}
+
+.toastDelete {
+  border-left: 4px solid var(--error) !important;
+}
+
+/* Progress bar personalizada */
+.progressBar {
+  height: 3px !important;
+  border-radius: 0 0 12px 12px !important;
+  background: linear-gradient(90deg, var(--primary), var(--success)) !important;
+}
+
+/* Botón cerrar */
+.closeButton {
+  opacity: 0.7 !important;
+  color: var(--text-secondary) !important;
+}
+
+.closeButton:hover {
+  opacity: 1 !important;
+  color: var(--text) !important;
+}
+
+/* Icono */
+.toastIcon {
+  margin-right: 12px !important;
+}

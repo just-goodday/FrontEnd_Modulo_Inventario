@@ -1,0 +1,311 @@
+/* ==========================================
+   GLOBAL INPUT STYLES (simplificados)
+   ========================================== */
+
+/* Ya no necesitamos estilos específicos para inputs,
+   ConfigProvider maneja esto globalmente */
+
+/* Solo mantenemos algunos estilos base */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ==========================================
+   ERROR TEXT
+   ========================================== */
+.errorText {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* ==========================================
+   REST OF YOUR STYLES REMAIN THE SAME
+   ========================================== */
+.container {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   MODAL
+   ========================================== */
+.modal {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.header {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+}
+
+.titleWrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.badge {
+    background: rgba(246, 168, 21, 0.15);
+    color: var(--warning);
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.closeButton {
+    width: 28px;
+    height: 28px;
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.closeButton:hover {
+    background: var(--overlay-light);
+    color: var(--text);
+}
+
+/* ==========================================
+   TABS
+   ========================================== */
+.tabsWrapper {
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.tabsContainer {
+    display: flex;
+    gap: 0;
+    background: var(--bg-secondary);
+    border-radius: 30px;
+    padding: 4px;
+}
+
+.activeTab,
+.inactiveTab {
+    flex: 1;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: transparent;
+}
+
+.activeTab {
+    background: var(--primary);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.inactiveTab {
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.inactiveTab:hover {
+    color: var(--text);
+}
+
+/* ==========================================
+   FORM WRAPPER
+   ========================================== */
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* ==========================================
+   FORM
+   ========================================== */
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* === SCROLL INVISIBLE === */
+.form {
+    scrollbar-width: none;
+}
+
+.form::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.form::-webkit-scrollbar-thumb {
+    background: transparent !important;
+}
+
+/* ==========================================
+   FIELD ROW (2 COLUMNAS)
+   ========================================== */
+.fieldRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.formFooter {
+    position: sticky;
+    bottom: 0;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 16px 0 0 0;
+    margin-top: 16px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.cancelButton,
+.submitButton {
+    flex: 1;
+    height: 45px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.submitButton {
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.submitButton:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+.cancelButton {
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+    background: var(--overlay-light);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 600px) {
+    .fieldRow {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal {
+        max-width: 100%;
+    }
+}

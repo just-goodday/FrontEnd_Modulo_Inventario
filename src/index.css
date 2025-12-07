@@ -1,0 +1,419 @@
+/* index.css - DataStore Design System */
+
+/* ============================================
+   VARIABLES DE TEMA
+   ============================================ */
+
+:root {
+  /* Fallback - Tema claro por defecto */
+  --bg: #ffffff;
+  --bg-secondary: #f7f8fb;
+  --card: #ffffff;
+  --text: #000000;
+  --text-secondary: #666666;
+  --text-muted: #b3b3b3;
+  --primary: #13c888;
+  --primary-hover: #10a771;
+  --primary-light: #d0f4e7;
+  --primary-dark: #04281b;
+  --border: #e6e6e6;
+  --error: #c81353;
+  --warning: #f6a815;
+  --success: #87eb08;
+  
+  /* Opacidades */
+  --overlay-heavy: rgba(0, 0, 0, 0.8);
+  --overlay-medium: rgba(0, 0, 0, 0.56);
+  --overlay-light: rgba(0, 0, 0, 0.24);
+  --overlay-subtle: rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   TEMA CLARO (Light)
+   ============================================ */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-secondary: #f7f8fb;
+  --card: #ffffff;
+  --text: #000000;
+  --text-secondary: #666666;
+  --text-muted: #b3b3b3;
+  --primary: #13c888;
+  --primary-hover: #10a771;
+  --primary-light: #d0f4e7;
+  --primary-dark: #04281b;
+  --border: #e6e6e6;
+  --error: #c81353;
+  --warning: #f6a815;
+  --success: #87eb08;
+  
+  --overlay-heavy: rgba(0, 0, 0, 0.8);
+  --overlay-medium: rgba(0, 0, 0, 0.56);
+  --overlay-light: rgba(0, 0, 0, 0.24);
+  --overlay-subtle: rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   TEMA OSCURO (Dark)
+   ============================================ */
+:root[data-theme="dark"] {
+  --bg: #0a0b17;
+  --bg-secondary: #111827;
+  --card: #1a1d2e;
+  --text: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #666666;
+  --primary: #13c888;
+  --primary-hover: #10a771;
+  --primary-light: rgba(19, 200, 136, 0.16);
+  --primary-dark: #d0f4e7;
+  --border: #333333;
+  --error: #ff4d7d;
+  --warning: #ffb84d;
+  --success: #a3ff3d;
+  
+  --overlay-heavy: rgba(255, 255, 255, 0.16);
+  --overlay-medium: rgba(255, 255, 255, 0.12);
+  --overlay-light: rgba(255, 255, 255, 0.08);
+  --overlay-subtle: rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================
+   TEMA DATASTORE (Brand)
+   ============================================ */
+:root[data-theme="datastore"] {
+  --bg: #0b1220;
+  --bg-secondary: #0f172a;
+  --card: #1e293b;
+  --text: #eaf2ff;
+  --text-secondary: #97a0bd;
+  --text-muted: #64748b;
+  --primary: #13c888;
+  --primary-hover: #10a771;
+  --primary-light: rgba(19, 200, 136, 0.16);
+  --primary-dark: #d0f4e7;
+  --border: #334155;
+  --error: #ff6b9d;
+  --warning: #ffc078;
+  --success: #b4ff5c;
+  
+  --overlay-heavy: rgba(19, 200, 136, 0.24);
+  --overlay-medium: rgba(19, 200, 136, 0.16);
+  --overlay-light: rgba(19, 200, 136, 0.08);
+  --overlay-subtle: rgba(19, 200, 136, 0.04);
+}
+
+/* ============================================
+   ESTILOS GLOBALES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+               'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+
+/* Encabezados Desktop */
+h1 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67px;
+  color: var(--text);
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 50px;
+  color: var(--text);
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 42px;
+  color: var(--text);
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 39px;
+  color: var(--text);
+}
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 34px;
+  color: var(--text);
+}
+
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--text);
+}
+
+/* Encabezados Mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    line-height: 50px;
+  }
+  
+  h2 {
+    font-size: 30px;
+    line-height: 42px;
+  }
+  
+  h3 {
+    font-size: 28px;
+    line-height: 39px;
+  }
+  
+  h4 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+  
+  h5 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  h6 {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+/* Textos de cuerpo */
+.text-large-semibold {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.text-large-medium {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.text-large {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.text-standard-semibold {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-standard-medium {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-standard {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-small {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-secondary);
+}
+
+.text-tiny {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 15px;
+  color: var(--text-muted);
+}
+
+/* Etiquetas de sección */
+.section-label {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+}
+
+/* ============================================
+   COMPONENTES BASE
+   ============================================ */
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px var(--overlay-light);
+}
+
+/* Botones */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--overlay-subtle);
+}
+
+.btn-error {
+  background: var(--error);
+  color: #ffffff;
+}
+
+.btn-success {
+  background: var(--success);
+  color: #000000;
+}
+
+.btn-warning {
+  background: var(--warning);
+  color: #ffffff;
+}
+
+/* Estados de navegación */
+.nav-item {
+  color: var(--text);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item:hover {
+  background: var(--overlay-subtle);
+}
+
+.nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Colores de texto */
+.text-primary { color: var(--text); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--primary); }
+.text-error { color: var(--error); }
+.text-warning { color: var(--warning); }
+.text-success { color: var(--success); }
+
+/* Fondos */
+.bg-primary { background: var(--primary); }
+.bg-secondary { background: var(--bg-secondary); }
+.bg-card { background: var(--card); }
+
+/* Bordes */
+.border { border: 1px solid var(--border); }
+.border-top { border-top: 1px solid var(--border); }
+.border-bottom { border-bottom: 1px solid var(--border); }
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+
+.rounded { border-radius: 8px; }
+.rounded-lg { border-radius: 12px; }
+
+.shadow { box-shadow: 0 2px 8px var(--overlay-light); }
+.shadow-lg { box-shadow: 0 4px 16px var(--overlay-medium); }
+
+

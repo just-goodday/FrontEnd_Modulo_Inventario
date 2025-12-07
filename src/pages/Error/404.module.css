@@ -1,0 +1,264 @@
+/* NotFound.module.css */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: var(--bg-secondary);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(19, 200, 136, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(19, 200, 136, 0.05) 0%, transparent 20%);
+}
+
+.content {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación del error */
+.errorAnimation {
+    position: relative;
+    margin-bottom: 50px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floatingElement {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.errorCode {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 10px 30px rgba(19, 200, 136, 0.3);
+    line-height: 1;
+}
+
+/* Círculos decorativos */
+.decorationCircle {
+    position: absolute;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.circle1 {
+    width: 100px;
+    height: 100px;
+    background: rgba(19, 200, 136, 0.1);
+    top: 20px;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.circle2 {
+    width: 60px;
+    height: 60px;
+    background: rgba(19, 200, 136, 0.15);
+    bottom: 30px;
+    right: 25%;
+    animation-delay: 0.5s;
+}
+
+.circle3 {
+    width: 80px;
+    height: 80px;
+    background: rgba(19, 200, 136, 0.08);
+    top: 60px;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Contenido de texto */
+.errorContent {
+    background: var(--card);
+    padding: 50px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px var(--overlay-light);
+}
+
+.errorTitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.errorDescription {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botones de acción */
+.actionButtons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 40px 0 30px;
+    flex-wrap: wrap;
+}
+
+.btnPrimary,
+.btnSecondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.btnPrimary {
+    background: var(--primary);
+    color: white;
+}
+
+.btnPrimary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(19, 200, 136, 0.3);
+}
+
+.btnSecondary {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--border);
+}
+
+.btnSecondary:hover {
+    background: var(--overlay-subtle);
+    transform: translateY(-2px);
+    border-color: var(--primary-light);
+}
+
+/* Información adicional */
+.additionalInfo {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.infoText {
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.statusCode {
+    background: var(--bg-secondary);
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.statusCode strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .errorCode {
+        font-size: 6rem;
+    }
+    
+    .errorContent {
+        padding: 30px 20px;
+    }
+    
+    .errorTitle {
+        font-size: 2rem;
+    }
+    
+    .errorDescription {
+        font-size: 1.1rem;
+    }
+    
+    .actionButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btnPrimary,
+    .btnSecondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+    
+    .decorationCircle {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .errorCode {
+        font-size: 4rem;
+    }
+    
+    .errorTitle {
+        font-size: 1.7rem;
+    }
+}

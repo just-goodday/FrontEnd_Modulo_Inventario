@@ -1,0 +1,332 @@
+/* UnderDevelopment.module.css */
+.container {
+    min-height: calc(100vh - 140px); /* Considera el header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: var(--bg-secondary);
+}
+
+.developmentContainer {
+    max-width: 600px;
+    width: 100%;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px var(--overlay-light);
+    animation: slideUp 0.8s ease-out;
+    margin: auto;
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contenedor de imagen */
+.imageContainer {
+    margin-bottom: 40px;
+}
+
+.floatingAnimation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.developmentImage {
+    max-width: 180px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.fallbackAnimation {
+    display: none;
+}
+
+.fallbackAnimation .constructionSvg {
+    max-width: 180px;
+    height: auto;
+}
+
+/* Animación de engranajes */
+.gearLarge {
+    animation: rotate 20s linear infinite;
+    transform-origin: 100px 100px;
+}
+
+.gearSmall {
+    animation: rotate 15s linear infinite reverse;
+    transform-origin: 160px 60px;
+}
+
+.tools {
+    animation: bounce 4s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Tipografía */
+.mainTitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.motivational {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* CTA Section */
+.ctaSection {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.ctaButton {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 160px;
+}
+
+.ctaButton:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(19, 200, 136, 0.3);
+}
+
+.ctaButton:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS MEJORADOS
+   ============================================ */
+
+/* Tablets pequeñas (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 50px 20px;
+        min-height: calc(100vh - 120px);
+    }
+    
+    .developmentContainer {
+        max-width: 550px;
+        padding: 50px 35px;
+    }
+    
+    .mainTitle {
+        font-size: 2rem;
+    }
+    
+    .description {
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablets (768px y menos) */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 16px;
+        min-height: calc(100vh - 100px);
+    }
+    
+    .developmentContainer {
+        padding: 40px 24px;
+        max-width: 500px;
+    }
+    
+    .mainTitle {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+    }
+    
+    .description {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .motivational {
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+    }
+    
+    .imageContainer {
+        margin-bottom: 32px;
+    }
+    
+    .developmentImage {
+        max-width: 150px;
+    }
+    
+    .fallbackAnimation .constructionSvg {
+        max-width: 150px;
+    }
+    
+    .ctaSection {
+        margin-top: 32px;
+        padding-top: 24px;
+    }
+    
+    .ctaButton {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+        min-width: 140px;
+    }
+}
+
+/* Móviles (480px y menos) */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 12px;
+        min-height: calc(100vh - 80px);
+    }
+    
+    .developmentContainer {
+        padding: 32px 20px;
+        border-radius: 16px;
+    }
+    
+    .mainTitle {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+    
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .motivational {
+        font-size: 0.9rem;
+        margin-bottom: 28px;
+    }
+    
+    .imageContainer {
+        margin-bottom: 28px;
+    }
+    
+    .developmentImage {
+        max-width: 130px;
+    }
+    
+    .fallbackAnimation .constructionSvg {
+        max-width: 130px;
+    }
+    
+    .ctaSection {
+        margin-top: 28px;
+        padding-top: 20px;
+    }
+    
+    .ctaButton {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        min-width: 130px;
+    }
+}
+
+/* Pantallas muy pequeñas (360px y menos) */
+@media (max-width: 360px) {
+    .developmentContainer {
+        padding: 24px 16px;
+    }
+    
+    .mainTitle {
+        font-size: 1.4rem;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+    }
+    
+    .developmentImage {
+        max-width: 110px;
+    }
+}
+
+/* Pantallas grandes (1440px+) */
+@media (min-width: 1440px) {
+    .developmentContainer {
+        max-width: 650px;
+        padding: 70px 50px;
+    }
+    
+    .mainTitle {
+        font-size: 2.5rem;
+    }
+    
+    .description {
+        font-size: 1.2rem;
+    }
+    
+    .developmentImage {
+        max-width: 200px;
+    }
+}

@@ -1,0 +1,28 @@
+.customTabs :global(.ant-tabs-nav) {
+    margin-bottom: 0 !important;
+}
+
+.customTabs :global(.ant-tabs-tab) {
+    padding: 12px 32px !important;
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary) !important;
+    min-width: 140px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.customTabs :global(.ant-tabs-tab-active) {
+    color: var(--primary) !important;
+}
+
+.customTabs :global(.ant-tabs-ink-bar) {
+    background: var(--primary) !important;
+    height: 3px !important;
+}
+
+.customTabs :global(.ant-tabs-nav::before) {
+    border: none !important;
+}

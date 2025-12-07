@@ -1,0 +1,358 @@
+/* ============================================
+   ALERT DIALOG - DataStore Design System
+   ============================================ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+  animation: overlayFadeIn 0.2s ease;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   DIALOG
+   ============================================ */
+
+.dialog {
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 550px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  padding: 25px;
+  animation: dialogSlideIn 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleWrapper {
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.4395px;
+  margin: 0;
+  padding-left: 28px;
+  white-space: nowrap;
+}
+
+/* Colores según tipo */
+.typeDelete .title {
+  color: #e7000b;
+}
+
+.typeDuplicate .title {
+  color: #13c888;
+}
+
+.typeCustom .title {
+  color: var(--text);
+}
+
+/* ============================================
+   DESCRIPTION
+   ============================================ */
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.descriptionText {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: #717182;
+  margin: 0;
+  margin-top: 8px;
+}
+
+.descriptionText:first-child {
+  margin-top: 8px;
+}
+
+.productName {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: var(--text);
+}
+
+.warningText {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: #717182;
+  margin: 0;
+  margin-top: 20px;
+}
+
+/* ============================================
+   LIST (para duplicar)
+   ============================================ */
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.listItem {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: #717182;
+  position: relative;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.listItem::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  background: #717182;
+  border-radius: 50%;
+}
+
+.listLabel {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: #717182;
+}
+
+.listValue {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: var(--text);
+}
+
+.additionalInfo {
+  margin-top: 12px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.cancelButton {
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: 36px;
+  padding: 9px 17px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cancelButton:hover {
+  background: var(--overlay-subtle);
+}
+
+.confirmButton {
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  height: 36px;
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.confirmButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.confirmButton:active {
+  transform: translateY(0);
+}
+
+/* Colores del botón según tipo */
+.typeDelete .confirmButton {
+  background: #e7000b;
+}
+
+.typeDuplicate .confirmButton {
+  background: #13c888;
+}
+
+.typeCustom .confirmButton {
+  background: var(--primary);
+}
+
+.buttonIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 16px;
+  }
+
+  .dialog {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .descriptionText,
+  .warningText,
+  .listItem,
+  .listLabel,
+  .listValue {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .cancelButton,
+  .confirmButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .titleWrapper {
+    height: auto;
+  }
+
+  .title {
+    white-space: normal;
+    padding-left: 28px;
+  }
+}

@@ -1,0 +1,2831 @@
+/* ============================================
+   PRODUCT FORM - DataStore Design System
+   ============================================ */
+
+.container {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--card);
+  border-radius: 16px;
+  /* ✅ Aumentado de 10px a 16px */
+  box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 480px;
+  /* ✅ Reducido de 720px a 480px */
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideIn 0.3s ease;
+  border: none;
+  /* ✅ Eliminado el borde */
+}
+
+/* ✅ Modal más grande en pantallas grandes */
+@media (min-width: 1280px) {
+  .modal {
+    max-width: 800px;
+    /* ✅ Aún más ancho en pantallas grandes */
+  }
+}
+
+/* ✅ Modal mediano en pantallas medianas */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .modal {
+    max-width: 680px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.header {
+  padding: 20px 20px 0 20px;
+  /* ✅ Reducido de 25px a 20px */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  /* ✅ Reducido de 20px a 18px */
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.closeButton {
+  width: 24px;
+  /* ✅ Aumentado de 16px a 24px */
+  height: 24px;
+  padding: 4px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background: var(--overlay-light);
+  color: var(--text);
+}
+
+/* ============================================
+   VALIDACIÓN DE CAMPOS
+   ============================================ */
+
+.inputError {
+  border-color: var(--error) !important;
+  background: rgba(200, 19, 83, 0.05) !important;
+}
+
+.errorText {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--error);
+  margin: 0;
+}
+
+/* ============================================
+   CONTADOR DE CARACTERES
+   ============================================ */
+
+.textareaWrapper {
+  position: relative;
+}
+
+.charCount {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--card);
+  padding: 2px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ============================================
+   SELECT
+   ============================================ */
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* ============================================
+   IMAGE UPLOAD
+   ============================================ */
+
+.imageUpload {
+  width: 100%;
+}
+
+.imageUploadPlaceholder {
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.imageUploadPlaceholder:hover {
+  border-color: var(--primary);
+  background: var(--bg-secondary);
+}
+
+.imageUploadPlaceholder p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.btnUpload {
+  padding: 8px 16px;
+  background: var(--primary);
+  color: var(--primary-dark);
+  border: none;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btnUpload:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   STORE CARDS (ALMACENES)
+   ============================================ */
+
+.storeCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.storeTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  margin: 0 0 12px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   ESTADOS VACÍOS MEJORADOS
+   ============================================ */
+
+.emptyState {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--text-muted);
+}
+
+.emptyTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0;
+}
+
+.emptyText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 400px;
+}
+
+/* ============================================
+   FOOTER CON BOTÓN STICKY
+   ============================================ */
+
+.formFooter {
+  position: sticky;
+  bottom: 0;
+  background: var(--card);
+  padding: 16px 25px 0 25px;
+  margin: 16px -25px 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   RESPONSIVE MEJORADO PARA TABS
+   ============================================ */
+
+@media (max-width: 640px) {
+  .container {
+    padding: 12px;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: 95vh;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .rowStock {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header {
+    padding: 20px 20px 0 20px;
+  }
+
+  .headerLeft {
+    flex-wrap: wrap;
+  }
+
+  .tabsWrapper {
+    padding: 12px 20px 0 20px;
+  }
+
+  .form {
+    padding: 10px 20px 0 20px;
+  }
+
+  .formFooter {
+    margin: 16px -20px 0;
+    padding: 16px 20px 0 20px;
+  }
+
+  /* ✅ Tabs más compactos en móvil */
+  .customTabs :global(.ant-tabs-nav) {
+    padding: 3px 4px;
+  }
+
+  .customTabs :global(.ant-tabs-nav-list) {
+    gap: 4px;
+  }
+
+  .customTabs :global(.ant-tabs-tab) {
+    padding: 4px 6px;
+    min-width: auto;
+  }
+
+  .customTabs :global(.ant-tabs-tab-btn) {
+    font-size: 11px;
+    letter-spacing: -0.05px;
+  }
+
+  .storeCard {
+    padding: 12px;
+  }
+
+  .storeTitle {
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+}
+
+/* ============================================
+   AJUSTE PARA PANTALLAS MUY PEQUEÑAS
+   ============================================ */
+
+@media (max-width: 380px) {
+  .customTabs :global(.ant-tabs-tab-btn) {
+    font-size: 10px;
+  }
+
+  .customTabs :global(.ant-tabs-tab) {
+    padding: 4px 4px;
+  }
+}
+
+/* ============================================
+   AJUSTE DE ALTURA DEL MODAL
+   ============================================ */
+
+@media (min-width: 641px) and (max-height: 800px) {
+  .modal {
+    max-height: 85vh;
+  }
+
+  .form {
+    padding: 20px 25px 0 25px;
+  }
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+   ============================================ */
+
+:root[data-theme="dark"] .imageUploadPlaceholder {
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .imageUploadPlaceholder:hover {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .charCount {
+  background: rgba(26, 29, 46, 0.9);
+}
+
+:root[data-theme="datastore"] .storeCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border);
+}
+
+:root[data-theme="datastore"] .charCount {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+/* ============================================
+   TABS
+   ============================================ */
+
+.tabsWrapper {
+  padding: 15px 25px 0 25px;
+  flex-shrink: 0;
+}
+
+/* Estilos personalizados para Ant Design Tabs */
+.customTabs :global(.ant-tabs-nav) {
+  margin-bottom: 0;
+  background: var(--bg-secondary);
+  border-radius: 14px;
+  padding: 4px 6px 4px 6px;
+}
+
+.customTabs :global(.ant-tabs-nav)::before {
+  display: none;
+}
+
+.customTabs :global(.ant-tabs-nav-wrap) {
+  overflow: visible;
+}
+
+.customTabs :global(.ant-tabs-nav-list) {
+  gap: 8px;
+  /* ✅ Reducido de 12px a 8px */
+  width: 100%;
+  /* ✅ Ocupar todo el ancho */
+  display: flex;
+  justify-content: space-between;
+  /* ✅ Distribuir uniformemente */
+}
+
+.customTabs :global(.ant-tabs-tab) {
+  margin: 0;
+  padding: 5px 9px;
+  border-radius: 14px;
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease;
+  min-width: auto;
+  /* ✅ Cambiar de 91px a auto */
+  flex: 1;
+  /* ✅ Que todos los tabs ocupen el mismo espacio */
+  justify-content: center;
+}
+
+.customTabs :global(.ant-tabs-tab-btn) {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  /* ✅ Reducido de 14px a 13px */
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: var(--text-secondary);
+  /* ✅ Cambiar de text-muted a text-secondary */
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  /* ✅ Evitar saltos de línea */
+}
+
+.customTabs :global(.ant-tabs-tab):hover :global(.ant-tabs-tab-btn) {
+  color: var(--text) !important;
+  /* ✅ Cambiar a text principal */
+}
+
+.customTabs :global(.ant-tabs-tab-active) {
+  background: var(--primary) !important;
+}
+
+.customTabs :global(.ant-tabs-tab-active) :global(.ant-tabs-tab-btn) {
+  color: var(--primary-dark) !important;
+  /* ✅ Este ya está bien */
+  font-weight: 600;
+  /* ✅ Más peso en el activo */
+}
+
+.customTabs :global(.ant-tabs-ink-bar) {
+  display: none;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+/* Scrollbar personalizada */
+.form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+.form {
+  padding: 25px 20px 20px 20px;
+  /* ✅ Reducido de 24px a 20px */
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Scrollbar personalizada */
+.form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.input {
+  height: 40px;
+  /* ✅ Reducido de 45px a 40px */
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input:disabled {
+  background: var(--overlay-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input:disabled::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.textarea {
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1504px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  resize: vertical;
+  min-height: 100px;
+  width: 100%;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--bg-secondary);
+}
+
+.hint {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6a7282;
+  margin: 10px 0 10px 0;
+}
+
+/* ============================================
+   ROW - Gap más pequeño
+   ============================================ */
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  /* ✅ Reducido de 16px a 12px */
+  width: 100%;
+}
+
+.rowStock {
+  display: flex;
+  gap: 27px;
+  width: 100%;
+}
+
+.rowStock .field {
+  flex: 1;
+}
+
+/* ============================================
+   TOGGLE - Más compacto
+   ============================================ */
+/* Contenedor para toggles en línea */
+.togglesRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* ✅ Dos columnas iguales */
+  gap: 1rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
+}
+
+.togglesRow2 {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* 👈 Nombre secundario ocupa el doble */
+  gap: 12px;
+  width: 100%;
+}
+
+.togglesRow .toggleContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  min-height: 56px;
+}
+
+.toggleContainer {
+  background: var(--bg-secondary);
+  border-radius: 0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.toggleLabel {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  /* ✅ Aumentado de 32px a 40px */
+  height: 22px;
+  /* ✅ Ajustado */
+  background: var(--border);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.toggleActive {
+  background: var(--primary);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  display: block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggleActive .toggleThumb {
+  transform: translateX(18px);
+  /* ✅ Ajustado */
+}
+
+/* ============================================
+   SUBMIT BUTTON - Más pequeño
+   ============================================ */
+
+.submitButton {
+  width: 100%;
+  height: 45px;
+  /* ✅ Reducido de 36px a 40px */
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  color: white;
+  /* ✅ Cambiado a blanco */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  border-radius: 50px;
+}
+
+.submitButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+/* ============================================
+   TAB CONTENT PLACEHOLDER
+   ============================================ */
+
+.tabContent {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.placeholderText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+  }
+
+  .modal {
+    max-width: 100%;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .rowStock {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .header {
+    padding: 20px 20px 0 20px;
+  }
+
+  .tabsWrapper {
+    padding: 15px 20px 0 20px;
+  }
+
+  .form {
+    padding: 20px 20px 20px 20px;
+  }
+
+  .customTabs :global(.ant-tabs-tab) {
+    min-width: auto;
+    padding: 5px 8px;
+  }
+
+  .customTabs :global(.ant-tabs-tab-btn) {
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   BOTÓN FLOTANTE (FAB)
+   ============================================ */
+
+.FabButton {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  background: var(--primary);
+  color: var(--primary-dark);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.4);
+  transition: all 0.2s ease;
+  z-index: 999;
+}
+
+.FabButton:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(19, 200, 136, 0.5);
+}
+
+.FabButton:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.Container {
+  width: 100%;
+  min-height: 100%;
+}
+
+.Content {
+  width: 100%;
+}
+
+.Outlet {
+  width: 100%;
+}
+
+.CardsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .CardsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .FabButton {
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  .CardsRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .FabButton {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ============================================
+   HEADER LEFT (Badge y título juntos)
+   ============================================ */
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  background: rgba(246, 168, 21, 0.1);
+  color: var(--warning);
+  font-size: 10px;
+  /* ✅ Reducido de 11px a 10px */
+  font-weight: 600;
+  padding: 3px 8px;
+  /* ✅ Reducido padding */
+  border-radius: 4px;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+
+:root[data-theme="dark"] .badge {
+  background: rgba(255, 184, 77, 0.2);
+}
+
+:root[data-theme="datastore"] .badge {
+  background: rgba(255, 192, 120, 0.2);
+}
+
+/* ============================================
+   BOTÓN IA - Más pequeño
+   ============================================ */
+
+.aiButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 6px;
+  width: 24px;
+  /* ✅ Reducido de 28px a 24px */
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  margin-left: auto;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+.aiIcon {
+  width: 14px;
+  /* ✅ Reducido de 16px a 14px */
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.aiButton:hover:not(:disabled) .aiIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.aiIconSpinning {
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark Mode - Botón IA */
+:root[data-theme="dark"] .aiButton {
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+:root[data-theme="dark"] .aiButton:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
+}
+
+/* DataStore Theme - Botón IA */
+:root[data-theme="datastore"] .aiButton {
+  background: linear-gradient(135deg, #13c888 0%, #10a771 100%);
+  box-shadow: 0 2px 8px rgba(19, 200, 136, 0.3);
+}
+
+:root[data-theme="datastore"] .aiButton:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.5);
+  background: linear-gradient(135deg, #10a771 0%, #13c888 100%);
+}
+
+/* ============================================
+   ESPECIFICACIONES - BOTÓN ELIMINAR
+   ============================================ */
+
+.specRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.removeSpecButton {
+  width: 36px;
+  height: 36px;
+  background: rgba(200, 19, 83, 0.1);
+  border: 1px solid rgba(200, 19, 83, 0.3);
+  border-radius: 8px;
+  color: var(--error);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.removeSpecButton:hover {
+  background: rgba(200, 19, 83, 0.2);
+  border-color: rgba(200, 19, 83, 0.5);
+  transform: scale(1.05);
+}
+
+.removeSpecButton:active {
+  transform: scale(0.95);
+}
+
+/* Dark Mode - Botón eliminar */
+:root[data-theme="dark"] .removeSpecButton {
+  background: rgba(255, 77, 125, 0.15);
+  border-color: rgba(255, 77, 125, 0.3);
+}
+
+:root[data-theme="dark"] .removeSpecButton:hover {
+  background: rgba(255, 77, 125, 0.25);
+  border-color: rgba(255, 77, 125, 0.5);
+}
+
+/* DataStore Theme - Botón eliminar */
+:root[data-theme="datastore"] .removeSpecButton {
+  background: rgba(255, 107, 157, 0.15);
+  border-color: rgba(255, 107, 157, 0.3);
+}
+
+:root[data-theme="datastore"] .removeSpecButton:hover {
+  background: rgba(255, 107, 157, 0.25);
+  border-color: rgba(255, 107, 157, 0.5);
+}
+
+/* ============================================
+   LOTES
+   ============================================ */
+/* .lotesTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 20px 0 12px 0;
+} */
+.batchContainer {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.batchContainer:last-child {
+  margin-bottom: 0;
+}
+
+.batchContainer:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px var(--overlay-light);
+}
+
+.batchHeader {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.batchTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ============================================
+   ALMACENES - STORES
+   ============================================ */
+
+.storesHeader {
+  margin-bottom: 16px;
+}
+
+.storesTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0 0 4px 0;
+}
+
+.storesDescription {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE MEJORADO
+   ============================================ */
+
+@media (max-width: 640px) {
+  .modal {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .header {
+    padding: 16px 16px 0 16px;
+  }
+
+  .tabsWrapper {
+    padding: 10px 16px 0 16px;
+  }
+
+  .form {
+    padding: 16px 16px 16px 16px;
+  }
+
+  .customTabs :global(.ant-tabs-tab) {
+    padding: 8px 12px;
+  }
+
+  .customTabs :global(.ant-tabs-tab-btn) {
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   ESPECIFICACIONES - HEADER Y ITEMS
+   ============================================ */
+
+.specsHeader {
+  margin-bottom: 10px;
+}
+
+.specsHeaderContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.specsTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0;
+}
+
+.specsDescription {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.specItem {
+  background: var(--bg-secondary);
+  /* gris claro */
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* ============================================
+   BOTÓN AGREGAR ESPECIFICACIÓN/LOTE
+   ============================================ */
+
+.addSpecButton {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.addSpecButton:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.addSpecButton:active {
+  transform: translateY(0);
+}
+
+/* Dark Mode - Botón agregar */
+:root[data-theme="dark"] .addSpecButton:hover {
+  background: rgba(19, 200, 136, 0.1);
+}
+
+:root[data-theme="datastore"] .addSpecButton:hover {
+  background: rgba(19, 200, 136, 0.08);
+}
+
+/* ============================================
+   LABEL CON BOTÓN IA - Misma altura
+   ============================================ */
+
+.label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  min-height: 24px;
+  /* ✅ Altura mínima para alinear con botón IA */
+}
+
+.aiButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  margin-left: auto;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+  align-self: center;
+  /* ✅ Alinear verticalmente */
+}
+
+/* ============================================
+   ROW CON 3 COLUMNAS (Stock mínimo solo)
+   ============================================ */
+
+.rowSingle {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* ✅ Una sola columna */
+  gap: 12px;
+  width: 100%;
+}
+
+/* Para que Stock Mínimo ocupe solo 1/3 del espacio */
+.rowThird {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* ✅ Una sola columna */
+  gap: 12px;
+  width: 100%;
+}
+
+.rowThird .field {
+  max-width: 33.333%;
+  /* ✅ Ocupa 1/3 del ancho */
+}
+
+@media (max-width: 640px) {
+  .rowThird .field {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   ROW INLINE - Select y Toggle en la misma línea
+   ============================================ */
+
+.rowInline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* ✅ Dos columnas iguales */
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  align-items: end;
+  /* ✅ Alinear por la parte inferior */
+}
+
+.rowInline2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  gap: 16px;
+}
+
+/* Toggle dentro de rowInline debe comportarse como field */
+.rowInline .toggleContainer {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  /* ✅ Misma altura que el input */
+  border-bottom: none;
+  /* ✅ Sin línea divisoria cuando está inline */
+  border: 1px solid var(--border);
+  /* ✅ Borde como los inputs */
+  border-radius: 8px;
+  padding: 0 12px;
+  background: var(--bg-secondary);
+}
+
+.rowInline .toggleLabel {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  /* ✅ Mismo tamaño que labels */
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+}
+
+/* ============================================
+   FIELD WRAPPER para Toggle inline
+   ============================================ */
+
+.fieldToggleInline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* ✅ Mismo gap que los fields normales */
+  width: 100%;
+}
+
+.fieldToggleInline .label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  /* ✅ El gap del padre se encarga del espaciado */
+  min-height: auto;
+}
+
+/* ============================================
+   ESTADO VACÍO DE ALMACENES
+   ============================================ */
+
+.emptyWarehouseState {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  min-height: 300px;
+}
+
+.emptyWarehouseContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 300px;
+}
+
+.emptyWarehouseIcon {
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.emptyWarehouseTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0;
+}
+
+.emptyWarehouseText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+.addFirstWarehouseButton {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.addFirstWarehouseButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+/* ============================================
+   ALMACENES - WAREHOUSES
+   ============================================ */
+
+.warehouseItem {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.warehouseItem:last-child {
+  margin-bottom: 0;
+}
+
+.warehouseItem:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px var(--overlay-light);
+}
+
+.warehouseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.warehouseTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  margin: 0;
+}
+
+.removeWarehouseButton {
+  width: 28px;
+  height: 28px;
+  background: rgba(200, 19, 83, 0.1);
+  border: 1px solid rgba(200, 19, 83, 0.3);
+  border-radius: 6px;
+  color: var(--error);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeWarehouseButton:hover {
+  background: rgba(200, 19, 83, 0.2);
+  border-color: rgba(200, 19, 83, 0.5);
+  transform: scale(1.05);
+}
+
+.warehouseFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .warehouseFields {
+    grid-template-columns: 1fr;
+  }
+
+  .warehouseItem {
+    padding: 12px;
+  }
+
+  .warehouseHeader {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Agregar al ProductForm.module.css */
+
+/* Contenedor de almacenes con scroll */
+.storesContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.storesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.storesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.storesContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Header de la sección almacenes */
+.storesHeader {
+  margin-bottom: 20px;
+}
+
+.storesHeaderContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.storesTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0 0 4px 0;
+}
+
+.storesDescription {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Item individual de almacén */
+.warehouseItem {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.warehouseItem:last-child {
+  margin-bottom: 0;
+}
+
+.warehouseItem:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px var(--overlay-light);
+}
+
+.warehouseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.warehouseTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  margin: 0;
+}
+
+.removeWarehouseButton {
+  width: 28px;
+  height: 28px;
+  background: rgba(200, 19, 83, 0.1);
+  border: 1px solid rgba(200, 19, 83, 0.3);
+  border-radius: 6px;
+  color: var(--error);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeWarehouseButton:hover {
+  background: rgba(200, 19, 83, 0.2);
+  border-color: rgba(200, 19, 83, 0.5);
+  transform: scale(1.05);
+}
+
+/* Campos del almacén en grid de 3 columnas */
+.warehouseFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Estado vacío de almacenes */
+.emptyWarehouseState {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  min-height: 300px;
+}
+
+.emptyWarehouseContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 300px;
+}
+
+.emptyWarehouseIcon {
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.emptyWarehouseTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0;
+}
+
+.emptyWarehouseText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+.addFirstWarehouseButton {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.addFirstWarehouseButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(19, 200, 136, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .warehouseFields {
+    grid-template-columns: 1fr;
+  }
+
+  .warehouseItem {
+    padding: 12px;
+  }
+
+  .warehouseHeader {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .rowThird {
+    grid-template-columns: 1fr;
+    /* ✅ En móvil ocupa todo el ancho */
+  }
+
+  .rowInline {
+    grid-template-columns: 1fr;
+    /* ✅ En móvil se apilan verticalmente */
+    gap: 12px;
+  }
+
+  .rowInline .toggleContainer {
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    padding: 12px 0;
+    background: transparent;
+  }
+}
+
+/* ============================================
+   FORM WRAPPER Y FOOTER STICKY
+   ============================================ */
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.form {
+  padding: 23px 23px 5px 23px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formFooter {
+  position: sticky;
+  bottom: 0;
+  background: var(--card);
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formFooter .submitButton {
+  margin-top: 0;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* ============================================
+   GRID DE IMÁGENES
+   ============================================ */
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.imageGridItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.imageGridItem:hover {
+  border-color: var(--primary);
+  transform: scale(1.02);
+}
+
+.imageGridItem.mainImage {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.imageGridItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainImageBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--primary);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.removeImageBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.imageGridItem:hover .removeImageBtn {
+  opacity: 1;
+}
+
+.removeImageBtn:hover {
+  background: var(--error);
+}
+
+.imageGridItemAdd {
+  aspect-ratio: 1;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+
+.imageGridItemAdd:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.imageGridItemAdd span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ============================================
+   BOTÓN IA VERDE
+   ============================================ */
+
+.aiButton {
+  background: linear-gradient(135deg, #13c888 0%, #10a771 100%);
+  border: none;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  margin-left: auto;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(19, 200, 136, 0.3);
+}
+
+.aiButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #10a771 0%, #0d8a5d 100%);
+  box-shadow: 0 4px 8px rgba(19, 200, 136, 0.4);
+  transform: scale(1.05);
+}
+
+.aiButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   LOTES CON OVERFLOW
+   ============================================ */
+
+.lotesContainer {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 0;
+}
+
+.lotesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lotesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lotesContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* ============================================
+   STORES CON OVERFLOW
+   ============================================ */
+
+.storesContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.storesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.storesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.storesContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* ============================================
+   ESPECIFICACIONES CON OVERFLOW
+   ============================================ */
+
+/* Contenedor principal de las especificaciones */
+.specsContainer {
+  position: relative;
+  /* Necesario para el overlay */
+  min-height: 240px;
+  /* 👈 Ahora el cuadro siempre tiene altura */
+  border: 2px dashed transparent;
+  /* Se usará cuando no haya specs */
+  border-radius: 12px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.specsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.specsContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.specsContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .imageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .formFooter {
+    padding: 12px 16px;
+  }
+
+  .formFooter .submitButton {
+    max-width: 100%;
+  }
+}
+/* Agregar al final de productForm.module.css */
+
+/* Botón deshabilitado durante loading */
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Spinner animado */
+.spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Opcional: efecto de pulso en el botón mientras carga */
+.submitButton:disabled {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+/* ============================================
+   ROW CON 3 COLUMNAS (Categoría, Marca, Stock Mínimo)
+   ============================================ */
+
+.rowThree {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.fullRow {
+  grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 768px) {
+  .rowThree {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   CASCADER DE ANT DESIGN
+   ============================================ 
+*/
+
+.cascader {
+  width: 100% !important;
+}
+
+.cascader :global(.ant-select-selector) {
+  height: 40px !important;
+  padding: 8px 12px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: -0.1px !important;
+  color: var(--text) !important;
+  transition: all 0.2s ease !important;
+}
+
+.cascader :global(.ant-select-selector:hover) {
+  border-color: var(--primary) !important;
+}
+
+.cascader :global(.ant-select-focused .ant-select-selector) {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-light) !important;
+}
+
+.cascader :global(.ant-select-selection-placeholder) {
+  color: var(--text-muted) !important;
+  opacity: 0.6 !important;
+}
+
+.cascader :global(.ant-select-arrow) {
+  color: var(--text-muted) !important;
+}
+
+/* ============================================
+   MENSAJE LOTES VACÍO
+   ============================================ */
+
+.emptyLotesMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  min-height: 200px;
+}
+
+.emptyLotesText {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 16px 0 4px 0;
+}
+
+.emptyLotesSubtext {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   TOGGLE DESHABILITADO
+   ============================================ */
+
+.toggleDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ======================================================
+   EMPTY STATE ESPECIFICACIONES
+   ====================================================== */
+
+.emptySpecsState {
+  padding: 60px 20px;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-height: 260px;
+}
+
+.emptySpecsIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.emptySpecsTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+
+.emptySpecsText {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 320px;
+  margin: 0;
+}
+
+/* ======================================================
+   LOADER CON OVERLAY + BLUR
+   ====================================================== */
+
+.specsLoaderOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 👈 Esto garantiza que cubra TODO */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.specsLoaderCard {
+  background: var(--card);
+  padding: 32px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.specsLoaderSpinner {
+  width: 40px;
+  height: 40px;
+  color: var(--primary);
+  animation: spinPulse 1s linear infinite;
+}
+
+/* Efecto spinner + pulso */
+@keyframes spinPulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.12);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ============================================================
+   🔥 LOADER PREMIUM — BARRAS IA PULSANTES
+   ============================================================ */
+.aiOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  border-radius: 20px;
+}
+
+/* Wrapper general para centrar el loader + texto */
+.aiBarsWrapper {
+  display: flex;
+  flex-direction: column;
+  /* Texto abajo */
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.aiBarsLoader {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.aiBarsText {
+  color: var(--text);
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* Barras IA */
+.aiBar {
+  width: 6px;
+  height: 32px;
+  background: var(--primary);
+  margin: 0 4px;
+  border-radius: 8px;
+  display: inline-block;
+  animation: aiPulseBar 1s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(0, 255, 180, 0.6);
+}
+
+/* Animaciones desfasadas */
+.aiBar:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.aiBar:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.aiBar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.aiBar:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.aiBar:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+@keyframes aiPulseBar {
+  0% {
+    transform: scaleY(0.4);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleY(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0.4);
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   TAB DE PRECIOS - STYLES
+   ============================================ */
+
+/* Header de precios */
+.pricesHeader {
+  margin-bottom: 20px;
+}
+
+.pricesHeaderContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.pricesTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  margin: 0;
+}
+
+.pricesDescription {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Info de márgenes de categoría */
+.categoryMarginInfo {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.marginBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--card);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.marginLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.marginValue {
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Container de precios con scroll */
+.pricesContainer {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 16px;
+}
+
+.pricesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pricesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pricesContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Item de precio */
+.priceItem {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.priceItem:last-child {
+  margin-bottom: 0;
+}
+
+.priceItem:hover {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px var(--overlay-light);
+}
+
+/* Header del item de precio */
+.priceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.priceItemTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.priceListBadge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 6px;
+  letter-spacing: 0.3px;
+}
+
+/* Botón eliminar precio */
+.removePriceButton {
+  width: 28px;
+  height: 28px;
+  background: rgba(200, 19, 83, 0.1);
+  border: 1px solid rgba(200, 19, 83, 0.3);
+  border-radius: 6px;
+  color: var(--error);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removePriceButton:hover {
+  background: rgba(200, 19, 83, 0.2);
+  border-color: rgba(200, 19, 83, 0.5);
+  transform: scale(1.05);
+}
+
+/* Fila de campos de precio */
+.priceRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.priceRow:last-child {
+  margin-bottom: 0;
+}
+
+/* Input con prefijo (S/) */
+.inputWithPrefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputPrefix {
+  position: absolute;
+  left: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inputWithPrefixField {
+  height: 40px;
+  padding: 8px 12px 8px 32px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.inputWithPrefixField:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Input con sufijo (%) */
+.inputWithSuffix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputSuffix {
+  position: absolute;
+  right: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inputWithSuffixField {
+  height: 40px;
+  padding: 8px 32px 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.inputWithSuffixField:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.inputWithSuffixField:disabled {
+  background: var(--overlay-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Checkbox para activar margen */
+.marginCheckbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--primary);
+  margin-left: 8px;
+}
+
+/* Precio sugerido */
+.suggestedPrice {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--primary);
+  margin-left: auto;
+  padding: 2px 8px;
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+/* Botón agregar precio */
+.addPriceButton {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.addPriceButton:hover:not(:disabled) {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.addPriceButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Estado vacío de precios */
+.emptyPricesState {
+  padding: 60px 20px;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-height: 240px;
+}
+
+.emptyPricesIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.emptyPricesTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+
+.emptyPricesText {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 320px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .priceRow {
+    grid-template-columns: 1fr;
+  }
+
+  .categoryMarginInfo {
+    flex-direction: column;
+  }
+
+  .marginBadge {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .priceItem {
+    padding: 12px;
+  }
+
+  .priceHeader {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Dark Mode Adjustments */
+:root[data-theme="dark"] .marginBadge {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .priceListBadge {
+  background: rgba(19, 200, 136, 0.2);
+  color: var(--primary);
+}
+
+:root[data-theme="dark"] .removePriceButton {
+  background: rgba(255, 77, 125, 0.15);
+  border-color: rgba(255, 77, 125, 0.3);
+}
+
+:root[data-theme="dark"] .removePriceButton:hover {
+  background: rgba(255, 77, 125, 0.25);
+  border-color: rgba(255, 77, 125, 0.5);
+}
+
+/* DataStore Theme Adjustments */
+:root[data-theme="datastore"] .priceItem {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="datastore"] .marginBadge {
+  background: rgba(19, 200, 136, 0.1);
+  border-color: rgba(19, 200, 136, 0.2);
+}
+
+:root[data-theme="datastore"] .addPriceButton:hover {
+  background: rgba(19, 200, 136, 0.08);
+}
+
+/* ProductForm.module.css */
+
+.noPricesAvailable {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  color: #0369a1;
+  font-size: 14px;
+}
+
+.noPricesAvailable .infoIcon {
+  flex-shrink: 0;
+  color: #0ea5e9;
+}
+
+.noPricesAvailable p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hint strong {
+  color: var(--primary);
+  font-weight: 600;
+}

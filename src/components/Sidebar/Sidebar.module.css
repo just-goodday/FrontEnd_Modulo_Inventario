@@ -1,0 +1,289 @@
+/* ============================================
+   SIDEBAR - DataStore Design System
+   ============================================ */
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+/* ============================================
+   LOGO PLACEHOLDER (cuando no hay imagen)
+   ============================================ */
+
+.logoPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Ajuste para iconos SVG */
+.iconWrapper svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+/* ============================================
+   HEADER / LOGO
+   ============================================ */
+
+.header {
+  height: 82px;
+  padding: 17px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  transition: border-color 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logoImage {
+  width: 46px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logoImage img {
+  width: 111.11%;
+  height: 99.81%;
+  margin-left: -11.11%;
+  margin-top: 0.09%;
+  max-width: none;
+}
+
+.logoText {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.nav {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.section:first-child {
+  margin-bottom: 16px;
+}
+
+.sectionLabel {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+/* ============================================
+   COLLAPSIBLE SECTION HEADER
+   ============================================ */
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.sectionHeader:hover .sectionLabel {
+  color: var(--text-secondary);
+}
+
+.sectionHeader .sectionLabel {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   CHEVRON ICON
+   ============================================ */
+
+.chevron {
+  color: #a0a0a0;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(0deg);
+}
+
+.chevron:not(.chevronOpen) {
+  transform: rotate(-90deg);
+}
+
+/* ============================================
+   MENU ITEMS CONTAINER
+   ============================================ */
+
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menuItemsOpen {
+  max-height: 1000px;
+  opacity: 1;
+  overflow: visible;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.menuItemsClosed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  gap: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* ============================================
+   MENU ITEMS
+   ============================================ */
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+}
+
+.menuItem:hover {
+  background: var(--overlay-subtle);
+}
+
+.menuItem.active {
+  background: var(--primary-light);
+}
+
+.menuItem.active .menuItemText {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.menuItem.active .iconWrapper {
+  color: var(--primary);
+}
+
+/* ============================================
+   ICONS
+   ============================================ */
+
+.iconWrapper {
+  width: 20px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* ============================================
+   TEXT
+   ============================================ */
+
+.menuItemText {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+.nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.nav::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    max-width: 288px;
+  }
+}
+
+
+
+/* Footer del sidebar */
+.sidebarFooter {
+    margin-top: auto;
+    padding: 0;
+}

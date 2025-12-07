@@ -1,0 +1,71 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 24px;
+
+    transition: background 0.3s, border-color 0.3s;
+}
+
+/* Para pantallas medianas: 2 columnas */
+@media (max-width: 1100px) {
+    .wrapper {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Para pantallas pequeñas: 1 columna */
+@media (max-width: 600px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.filterItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Select estilo DataStore */
+.select {
+    width: 100%;
+}
+
+/* Override ANTD */
+.select :global(.ant-select-selector) {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    height: 44px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px 14px !important;
+}
+
+.select :global(.ant-select-selection-item) {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.select :global(.ant-select-arrow) {
+    color: var(--text-muted) !important;
+}
+
+.select:hover :global(.ant-select-selector) {
+    border-color: var(--primary);
+    background: var(--overlay-subtle);
+}

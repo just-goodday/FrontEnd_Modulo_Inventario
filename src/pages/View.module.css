@@ -1,0 +1,56 @@
+.Container {
+  overflow: hidden;
+  display: flex;
+  height: 100vh;
+}
+
+.SideBar {
+  overflow-y: auto;
+  flex: 0.14;
+  background-color: var(--color-background-primary);
+  transition: background-color var(--transition-normal);
+}
+
+.Content {
+  overflow-y: auto;
+  display: flex;
+  flex: 0.86;
+  flex-direction: column;
+}
+
+.Header {
+  z-index: 10;
+  display: flex;
+  flex: 0 0 70px;
+  align-items: center;
+}
+/* Contenedor bajo el header */
+.Outlet {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+  gap: 16px;
+  background: var(--color-background-tertiary);
+}
+
+/* Fila de tarjetas */
+.CardsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Ajuste de gaps y densidad por breakpoints */
+@media (min-width: 1280px) {
+  .Outlet { padding: 18px; gap: 18px; }
+  .CardsRow { gap: 18px; }
+}
+@media (min-width: 1536px) {
+  .Outlet { padding: 20px; gap: 20px; }
+  .CardsRow { gap: 20px; }
+}
+@media (min-width: 1920px) {
+  .Outlet { padding: 24px; gap: 24px; }   /* más aire en 1080p */
+  .CardsRow { gap: 24px; }
+}

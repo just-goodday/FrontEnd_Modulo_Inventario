@@ -1,0 +1,106 @@
+/* ============================================================
+   🟦 TOAST SUPERIOR – TIPO WINDOWS (DESLIZAR)
+   ============================================================ */
+
+.toastContainer {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+.toastCard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    width: 360px;
+    border-radius: 10px;
+    margin: 0;
+    /* 👈 asegúrate de ESTO */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.20);
+    text-align: center;
+    pointer-events: auto;
+
+    animation: slideDown 0.28s ease-out forwards;
+}
+
+
+/* Ícono */
+.icon {
+    width: 34px;
+    height: 34px;
+    color: var(--warning);
+    margin-bottom: 6px;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.message {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 20px;
+}
+
+/* Botones */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cancel {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel:hover {
+    background: var(--overlay-light);
+}
+
+.confirm {
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirm:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   🟩 ANIMACIONES
+   ============================================================ */
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

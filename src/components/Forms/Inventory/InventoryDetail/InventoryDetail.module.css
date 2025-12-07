@@ -1,0 +1,398 @@
+/* ============================================================
+   🟦 BASE DEL MODAL (Fondo + Animaciones + Contenedor)
+============================================================ */
+.container {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 
+        0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* ==========================
+   HEADER
+========================== */
+.header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.closeButton {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.closeButton:hover {
+    background: var(--overlay-light);
+    color: var(--text);
+}
+
+
+/* ============================================================
+   🟦 CONTENIDO (Scrolling + Separación interna)
+============================================================ */
+.content {
+    padding: 15px 24px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Scroll visual más limpio */
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+.content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+.content::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+
+/* ============================================================
+   🟦 INFO DEL PRODUCTO (Nombre + SKU)
+============================================================ */
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.productName {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.productSku {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   🟦 GRID PRINCIPAL (Imagen + Stats derecha)
+============================================================ */
+.mainGrid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.imageBox {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imagePlaceholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ============================================================
+   🟦 STATS DEL PRODUCTO (Stock disponible, Reservado, etc.)
+============================================================ */
+
+/* Contenedor vertical */
+.statsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.warehouseLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+
+/* ✔ Stat principal (Stock disponible) */
+.mainStat {
+    background: rgba(0, 200, 120, 0.08);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mainStatLabel {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.mainStatValue {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+
+/* ✔ Stats secundarios (Reservado / Disponible) */
+.secondaryStat {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column; /* 👈 Apila texto arriba + número abajo */
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.statLabel {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.statValue {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.statValue.available {
+    color: var(--error);
+}
+
+
+/* ============================================================
+   🟦 MOVIMIENTOS DE STOCK (Lista + Cabecera + Estilos)
+============================================================ */
+
+.movementsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Cabecera con History + Contadores */
+.movementsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movementsTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Pill contador "X movimientos" */
+.movementsCounter {
+    background: rgba(0, 200, 120, 0.12);
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Botón "Ver todos" estilo Figma */
+.viewAllInlineButton {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.viewAllInlineButton:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.movementsRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* ===== Lista de movimientos ===== */
+
+.movementsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.movementCard {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.movementCard:hover {
+    border-color: var(--primary);
+    background: var(--overlay-light);
+}
+
+.movementLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.movementBadge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.movementBadge.salida {
+    background: rgba(231, 0, 11, 0.1);
+    color: var(--error);
+}
+
+.movementBadge.entrada {
+    background: rgba(123, 215, 7, 0.1);
+    color: var(--success);
+}
+
+.movementInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.movementTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.movementDate {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.movementRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.movementQuantity {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.movementQuantity.positive {
+    color: var(--success);
+}
+
+.movementQuantity.negative {
+    color: var(--error);
+}
+
+.movementUnit {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   🟦 RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+    .mainGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .imageBox {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
